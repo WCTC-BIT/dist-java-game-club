@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Club Locator</title>
+    <!-- https://edlynvillegas.github.io/evo-calendar/ -->
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/evo-calendar.css"/>
+    <!-- Optional Themes -->
+    <link rel="stylesheet" href="css/evo-calendar.midnight-blue.css"/>
+    <link rel="stylesheet" href="css/evo-calendar.orange-coral.css"/>
+    <link rel="stylesheet" href="css/evo-calendar.royal-navy.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/evo-calendar.js"></script>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="evoCalendar"></div>
+<div class="form">
+    <form id="rsvp-form">
+        <input type="hidden" id="event-id">
+        <label for="email">Email</label>
+        <br/>
+        <input type="email" id="email" value="sread@wctc.edu" required>
+        <input type="submit" value="RSVP">
+    </form>
+</div>
+<div id="confirmation"></div>
+<script>
+    fetch("http://localhost:8080/api/events/")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        });
+</script>
+</body>
+</html>
