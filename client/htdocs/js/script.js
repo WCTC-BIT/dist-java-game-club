@@ -15,9 +15,7 @@ $(function () {
                 success: function (data) {
                     confirmRsvp(data);
                 },
-                error: function (error) {
-                    console.log(error);
-                },
+                error: handleError,
                 dataType: "json"
             });
         }
@@ -26,19 +24,17 @@ $(function () {
     });
 
     $.ajax({
-        url: "http://localhost:8080/api/events/",
+        url: "http://localhost:8080/api/v2/events/",
         success: function (data) {
             populateCalendar(data);
         },
-        error: function (error) {
-            console.log(error);
-        },
+        error: handleError,
         dataType: "json"
     });
 
-    var confirmRsvp = function(data) {
-      setConfirmation(data.status);
-      hideRsvpForm();
+    var confirmRsvp = function (data) {
+        setStatusMessage(data.status);
+        hideRsvpForm();
     };
 
     var populateCalendar = function (data) {
@@ -53,16 +49,21 @@ $(function () {
             .evoCalendar('selectMonth', 10)
             .on('selectEvent', function (event, activeEvent) {
                 showRsvpForm(activeEvent);
-                setConfirmation("");
+                setStatusMessage("");
             })
             .on('selectDate', function (newDate, oldDate) {
                 hideRsvpForm();
-                setConfirmation("");
+                setStatusMessage("");
             });
     };
 
-    var setConfirmation = function(text) {
-        $("#confirmation").text(text);
+    var setStatusMessage = function (text) {
+        $("#status-message").text(text);
+    };
+
+    var handleError = function (error) {
+        setStatusMessage(error.responseJSON.message);
+        console.log(error);
     };
 
     var showRsvpForm = function (activeEvent) {

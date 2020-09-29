@@ -31,9 +31,13 @@ public class RegistrationController {
     @Autowired
     private ModelMapper modelMapper;
 
+    private Rsvp convertToDto(Registration reg) {
+        Rsvp rsvp = modelMapper.map(reg, Rsvp.class);
+        return rsvp;
+    }
+
     private Registration convertToEntity(Rsvp rsvp) throws Exception {
-//        Registration reg = modelMapper.map(rsvp, Registration.class);
-        Registration reg = new Registration();
+        Registration reg = modelMapper.map(rsvp, Registration.class);
         // Can't save a parent object with transient child objects
         Member member = memberService.getMember(rsvp.getMemberEmail());
         Event event = eventService.getEvent(rsvp.getEventId());

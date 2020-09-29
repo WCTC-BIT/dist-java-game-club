@@ -27,7 +27,7 @@ input[type=submit]:hover {
     background-color: #00adb5;
 }
 
-div.form, #confirmation {
+div.form, #status-message {
     font-size: 20px;
     width: 50%;
     margin: auto;

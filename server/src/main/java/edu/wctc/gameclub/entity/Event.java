@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -12,13 +13,13 @@ import java.time.LocalDateTime;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="event_id")
+    @Column(name = "event_id")
     private int id;
 
-    @Column(name="title")
+    @Column(name = "title")
     private String name;
 
-    @Column(name="event_date")
+    @Column(name = "event_date")
     private LocalDateTime date;
 
     private String location;
@@ -26,6 +27,6 @@ public class Event {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name="host_id", referencedColumnName = "member_id")
+    @JoinColumn(name = "host_id", referencedColumnName = "member_id")
     private Member host;
 }
