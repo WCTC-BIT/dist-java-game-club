@@ -47,7 +47,7 @@ public class RegistrationController {
     }
 
 
-    @PostMapping("/")
+    @PostMapping
     public Rsvp makeReservation(@RequestBody Rsvp rsvp) {
         try {
             Registration reg = convertToEntity(rsvp);

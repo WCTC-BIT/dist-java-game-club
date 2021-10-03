@@ -38,7 +38,7 @@ public class CalendarEventController {
         return event;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<CalendarEvent> getAllEvents() {
         return eventService.getAllEvents().stream()
                 .map(this::convertToDto).collect(Collectors.toList());

@@ -19,7 +19,7 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
-    @PostMapping("/")
+    @PostMapping
     public Event createEvent(@RequestBody Event event) {
         // If client sent an ID, ignore it
         // POST will always create a new event, never update
@@ -28,7 +28,7 @@ public class EventController {
         return event;
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Event updateEvent(@RequestBody Event event) {
         // PUT will always update a new event, never create
         eventService.save(event);
@@ -47,7 +47,7 @@ public class EventController {
         }
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Event> getAllEvents() {
         return eventService.getAllEvents();
     }
