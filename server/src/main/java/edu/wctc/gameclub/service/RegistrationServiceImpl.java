@@ -5,6 +5,9 @@ import edu.wctc.gameclub.repo.RegistrationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
     @Autowired
@@ -13,6 +16,13 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public void cancel(int registrationId) {
         registrationRepo.deleteById(registrationId);
+    }
+
+    @Override
+    public List<Registration> getAllRegistrations() {
+        List<Registration> list = new ArrayList<>();
+        registrationRepo.findAll().forEach(list::add);
+        return list;
     }
 
     @Override

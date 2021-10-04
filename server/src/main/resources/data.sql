@@ -19,6 +19,9 @@ values (6, 'Amos Burton', 'aburton@wctc.edu');
 insert into member (member_id, name, email)
 values (7, 'Stacy Read', 'sread@wctc.edu');
 
+insert into member (member_id, name, email)
+values (8, 'Hello Kitty', 'hkitty@wctc.edu');
+
 insert into event(event_id, title, event_date, host_id, location, description)
 values (1, 'Halloween Werewolf', PARSEDATETIME('31 Oct 2023, 21:00', 'dd MMM yyyy, HH:mm'),
         3, 'Camina''s House: 123 Main St, Waukesha', 'Join us for a night of spooky social deduction.');
