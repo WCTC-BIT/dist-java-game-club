@@ -58,6 +58,7 @@ public class RegistrationController {
             }
             return rsvp;
         } catch (Exception e) {
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid RSVP", e);
         }
     }
