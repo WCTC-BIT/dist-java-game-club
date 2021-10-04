@@ -1,11 +1,11 @@
 $(function () {
     $("#rsvp-form").submit(function (e) {
-        var id = $("#event-id").val();
-        var email = $("#email").val();
+        let id = $("#event-id").val();
+        let email = $("#email").val();
 
         if (id && id > 0 && email) {
             $.ajax({
-                url: "http://localhost:8080/api/rsvp/",
+                url: "http://localhost:8080/api/rsvp",
                 method: "POST",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -15,7 +15,9 @@ $(function () {
                 success: function (data) {
                     confirmRsvp(data);
                 },
-                error: handleError,
+                error: function () {
+                    handleError(jqXHR, exception);
+                },
                 dataType: "json"
             });
         }
@@ -24,20 +26,22 @@ $(function () {
     });
 
     $.ajax({
-        url: "http://localhost:8080/api/v2/events/",
+        url: "http://localhost:8080/api/v2/events",
         success: function (data) {
             populateCalendar(data);
         },
-        error: handleError,
+        error: function () {
+            handleError(jqXHR, exception);
+        },
         dataType: "json"
     });
 
-    var confirmRsvp = function (data) {
+    let confirmRsvp = function (data) {
         setStatusMessage(data.status);
         hideRsvpForm();
     };
 
-    var populateCalendar = function (data) {
+    let populateCalendar = function (data) {
         data.forEach(element => element.type = 'Event');
 
         $('#evoCalendar')
@@ -57,16 +61,16 @@ $(function () {
             });
     };
 
-    var setStatusMessage = function (text) {
+    let setStatusMessage = function (text) {
         $("#status-message").text(text);
     };
 
-    var handleError = function (error) {
-        setStatusMessage(error.responseJSON.message);
+    let handleError = function (xhr, error) {
+        setStatusMessage(error);
         console.log(error);
     };
 
-    var showRsvpForm = function (activeEvent) {
+    let showRsvpForm = function (activeEvent) {
         if (activeEvent) {
             $("#event-id").val(activeEvent.id);
             $("#rsvp-form").show();
@@ -75,7 +79,7 @@ $(function () {
         }
     };
 
-    var hideRsvpForm = function () {
+    let hideRsvpForm = function () {
         $("#event-id").val(-1);
         $("#rsvp-form").hide();
     };
