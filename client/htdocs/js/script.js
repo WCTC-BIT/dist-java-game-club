@@ -15,8 +15,8 @@ $(function () {
                 success: function (data) {
                     confirmRsvp(data);
                 },
-                error: function () {
-                    handleError(jqXHR, exception);
+                error: function (jqHXR, textStatus, errorThrown) {
+                    handleError(jqHXR.responseText);
                 },
                 dataType: "json"
             });
@@ -30,8 +30,8 @@ $(function () {
         success: function (data) {
             populateCalendar(data);
         },
-        error: function () {
-            handleError(jqXHR, exception);
+        error: function (jqHXR, textStatus, errorThrown) {
+            handleError(jqHXR.responseText);
         },
         dataType: "json"
     });
@@ -65,7 +65,7 @@ $(function () {
         $("#status-message").text(text);
     };
 
-    let handleError = function (xhr, error) {
+    let handleError = function (error) {
         setStatusMessage(error);
         console.log(error);
     };
