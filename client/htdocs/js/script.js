@@ -5,7 +5,7 @@ $(function () {
 
         if (id && id > 0 && email) {
             $.ajax({
-                url: "http://localhost:8080/api/rsvp",
+                url: "http://localhost:8080/api/v2/rsvp",
                 method: "POST",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -42,7 +42,7 @@ $(function () {
     };
 
     let populateCalendar = function (data) {
-        data.forEach(element => element.type = 'Event');
+        // data.forEach(element => element.type = "Event");
 
         $('#evoCalendar')
             .evoCalendar({
