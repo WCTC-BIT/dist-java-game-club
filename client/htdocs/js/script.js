@@ -5,7 +5,7 @@ $(function () {
 
         if (id && id > 0 && email) {
             $.ajax({
-                url: "http://localhost:8080/api/v2/rsvp",
+                url: "http://localhost:8080/api/rsvp",
                 method: "POST",
                 contentType: "application/json",
                 data: JSON.stringify({
