@@ -28,6 +28,6 @@ public class Event {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "host_id", referencedColumnName = "member_id")
+    @JoinColumn(name = "host_id")
     private Member host;
 }
