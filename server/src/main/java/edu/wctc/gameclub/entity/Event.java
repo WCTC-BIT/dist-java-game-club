@@ -1,11 +1,10 @@
 package edu.wctc.gameclub.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Data
@@ -22,8 +21,10 @@ public class Event {
     @Column(name = "event_date")
     private LocalDateTime date;
 
+    @Column(name="location")
     private String location;
 
+    @Column(name="description")
     private String description;
 
     @ManyToOne

@@ -20,27 +20,8 @@ public class CalendarEventController {
     @Autowired
     private EventService eventService;
 
-    @Autowired
-    private MemberService memberService;
-
-    @Autowired
-    private ModelMapper modelMapper;
-
-    private CalendarEvent convertToDto(Event event) {
-        CalendarEvent calEvent = modelMapper.map(event, CalendarEvent.class);
-        return calEvent;
-    }
-
-    private Event convertToEntity(CalendarEvent calEvent) throws Exception {
-        Event event = modelMapper.map(calEvent, Event.class);
-        Member host = memberService.getMember(calEvent.getHostId());
-        event.setHost(host);
-        return event;
-    }
-
     @GetMapping
     public List<CalendarEvent> getAllEvents() {
-        return eventService.getAllEvents().stream()
-                .map(this::convertToDto).collect(Collectors.toList());
+        return eventService.getAllCalendarEvents();
     }
 }

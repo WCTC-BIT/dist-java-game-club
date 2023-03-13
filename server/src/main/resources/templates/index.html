@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Management Dashboard</title>
+    <link th:href="@{/style.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Members</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Member ID</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="member : ${memberList}">
+        <td th:text="${member.id}">ID</td>
+        <td th:text="${member.name}">NAME</td>
+        <td th:text="${member.email}">EMAIL</td>
+    </tr>
+    </tbody>
+</table>
+<h1>Events</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Event ID</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Host</th>
+        <th>Location</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="event : ${eventList}">
+        <td th:text="${event.id}">ID</td>
+        <td th:text="${event.name}">NAME</td>
+        <td th:text="${event.date}">DATE</td>
+        <td th:text="|${event.host.name} (${event.host.email})}|">HOST</td>
+        <td th:text="${event.location}">Location</td>
+        <td th:text="${event.description}">Description</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

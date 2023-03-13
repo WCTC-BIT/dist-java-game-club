@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 public class Rsvp {
     private int eventId;
     private String memberEmail;
-    private String status;
+    private String rsvpStatus;
 }

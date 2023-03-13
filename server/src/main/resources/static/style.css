@@ -1,0 +1,8 @@
+body {
+    font-family: Tahoma, sans-serif;
+    padding: 25px;
+}
+td, th {
+    padding: 5px;
+    border: 1px solid grey;
+}

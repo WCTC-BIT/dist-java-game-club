@@ -1,9 +1,9 @@
 package edu.wctc.gameclub.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 
 @Entity
 @Data
@@ -14,8 +14,9 @@ public class Member {
     @Column(name = "member_id")
     private int id;
 
+    @Column(name="name")
     private String name;
 
-    @Column(unique = true)
+    @Column(name="email", unique = true)
     private String email;
 }

@@ -18,15 +18,13 @@
 <body>
 <div id="evoCalendar"></div>
 <div class="form">
-    <form id="rsvp-form">
-        <input type="hidden" id="event-id">
-        <label for="email">Email</label>
-        <br/>
-        <input type="email" id="email" value="sread@wctc.edu" required>
-        <input type="submit" value="RSVP">
-    </form>
+    <input type="hidden" id="eventId">
+    <label for="email">Email</label>
+    <br/>
+    <input type="email" id="email" value="sread@wctc.edu" required>
+    <button id="rsvpButton">RSVP</button>
 </div>
-<div id="status-message"></div>
+<div id="statusMessage"></div>
 <script>
     fetch("http://localhost:8080/api/v2/events")
         .then(response => {
