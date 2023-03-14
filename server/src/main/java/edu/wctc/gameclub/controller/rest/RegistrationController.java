@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/rsvp")
+//@CrossOrigin(origins="http://localhost:63342")
 public class RegistrationController {
     @Autowired
     private RegistrationService registrationService;
@@ -38,10 +39,5 @@ public class RegistrationController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid RSVP", e);
         }
 
-    }
-
-    @GetMapping
-    public List<Registration> getAllRegistrations() {
-        return registrationService.getAllRegistrations();
     }
 }

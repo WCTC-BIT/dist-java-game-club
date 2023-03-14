@@ -39,7 +39,7 @@ async function rsvp() {
 }
 
 async function loadEvents() {
-    const url = "http://localhost:8080/api/v2/events";
+    const url = "http://localhost:8080/api/events";
     const requestOptions = {
         method: "GET"
     };

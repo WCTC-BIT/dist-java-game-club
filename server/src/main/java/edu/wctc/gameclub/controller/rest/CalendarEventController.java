@@ -15,7 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v2/events")
+@RequestMapping("/api/events")
+//@CrossOrigin(origins="http://localhost:63342")
 public class CalendarEventController {
     @Autowired
     private EventService eventService;
