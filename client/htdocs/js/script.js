@@ -31,9 +31,9 @@ async function rsvp() {
                     return response.json();
                 else
                     return response.json()
-                        .then(json => {throw new Error(json.message)});
+                        .then(data => {throw new Error(data.message)});
             })
-            .then(json => confirmRsvp(json))
+            .then(data => confirmRsvp(data))
             .catch(err => handleError(err));
     }
 }
@@ -50,9 +50,9 @@ async function loadEvents() {
                 return response.json();
             else
                 return response.json()
-                    .then(json => {throw new Error(json.message)});
+                    .then(data => {throw new Error(data.message)});
         })
-        .then(json => populateCalendar(json))
+        .then(data => populateCalendar(data))
         .catch(err => handleError(err));
 }
 
