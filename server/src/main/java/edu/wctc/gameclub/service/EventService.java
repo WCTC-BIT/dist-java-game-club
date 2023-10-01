@@ -6,21 +6,24 @@ import edu.wctc.gameclub.entity.Member;
 import edu.wctc.gameclub.exception.ResourceNotFoundException;
 import edu.wctc.gameclub.repo.EventRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EventService {
-    @Autowired
-    private MemberService memberService;
-    @Autowired
-    private EventRepository eventRepository;
-    @Autowired
-    private ModelMapper modelMapper;
+    private final MemberService memberService;
+    private final EventRepository eventRepository;
+    private final ModelMapper modelMapper;
+
+    public EventService(MemberService memberService,
+                        EventRepository eventRepository,
+                        ModelMapper modelMapper) {
+        this.memberService = memberService;
+        this.eventRepository = eventRepository;
+        this.modelMapper = modelMapper;
+    }
 
     public void delete(int eventId) throws ResourceNotFoundException {
         getEvent(eventId);

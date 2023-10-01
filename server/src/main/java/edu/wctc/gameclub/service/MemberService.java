@@ -3,7 +3,6 @@ package edu.wctc.gameclub.service;
 import edu.wctc.gameclub.entity.Member;
 import edu.wctc.gameclub.exception.ResourceNotFoundException;
 import edu.wctc.gameclub.repo.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,8 +10,11 @@ import java.util.List;
 
 @Service
 public class MemberService {
-    @Autowired
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     public Member getMember(String email) throws ResourceNotFoundException {
         return memberRepository.findByEmail(email).orElseThrow(() ->

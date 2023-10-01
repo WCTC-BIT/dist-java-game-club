@@ -14,5 +14,5 @@ public class CalendarEvent {
     private String description;
     private LocalDateTime date;
     private int hostId;
-    private String type = "Event";
+    private String type = "Event"; // required field for EvoCalendar JS library
 }
