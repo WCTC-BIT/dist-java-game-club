@@ -25,7 +25,7 @@ public class EventService {
         this.modelMapper = modelMapper;
     }
 
-    public void delete(int eventId) throws ResourceNotFoundException {
+    public void delete(int eventId) {
         getEvent(eventId);
         eventRepository.deleteById(eventId);
     }
@@ -42,7 +42,7 @@ public class EventService {
         return list;
     }
 
-    public Event getEvent(int id) throws ResourceNotFoundException {
+    public Event getEvent(int id) {
         return eventRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Event", "id", id));
     }
@@ -55,7 +55,7 @@ public class EventService {
         return modelMapper.map(event, CalendarEvent.class);
     }
 
-    private Event convertToEntity(CalendarEvent calEvent) throws Exception {
+    private Event convertToEntity(CalendarEvent calEvent) {
         Event event = modelMapper.map(calEvent, Event.class);
         Member host = memberService.getMember(calEvent.getHostId());
         event.setHost(host);

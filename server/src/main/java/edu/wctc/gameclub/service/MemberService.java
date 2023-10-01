@@ -16,13 +16,13 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public Member getMember(String email) throws ResourceNotFoundException {
+    public Member getMember(String email) {
         return memberRepository.findByEmail(email).orElseThrow(() ->
                 new ResourceNotFoundException("Member", "email", email));
     }
 
     // New for v2
-    public Member getMember(int memberId) throws ResourceNotFoundException {
+    public Member getMember(int memberId) {
         return memberRepository.findById(memberId).orElseThrow(
                 () -> new ResourceNotFoundException("Member", "id", memberId));
     }
