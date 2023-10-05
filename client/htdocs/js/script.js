@@ -39,13 +39,9 @@ async function rsvp() {
 }
 
 async function loadEvents() {
-    const url = "http://localhost:8080/api/events";
-    // GET is the default, so this object is optional
-    const requestOptions = {
-        method: "GET"
-    };
+    const url = "http://localhost:8080/api/v2/events";
 
-    // Or just fetch(url) to default to using GET
+    // GET is the default HTTP method for fetch
     fetch(url)
         .then(response => {
             if (response.ok)

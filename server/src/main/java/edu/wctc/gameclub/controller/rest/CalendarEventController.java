@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/events")
+@RequestMapping("/api/v2/events")
 //@CrossOrigin(origins="http://localhost:63342")
 public class CalendarEventController {
     private final EventService eventService;
