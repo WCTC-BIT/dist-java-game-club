@@ -67,8 +67,8 @@ function populateCalendar(data) {
             calendarEvents: data,
             theme: 'Midnight Blue'
         })
-        .evoCalendar('selectYear', 2023)
-        .evoCalendar('selectMonth', 10)
+        .evoCalendar('selectYear', new Date().getFullYear())
+        .evoCalendar('selectMonth', new Date().getMonth())
         .on('selectEvent', function (event, activeEvent) {
             showRsvpForm(activeEvent);
             setStatusMessage("");
