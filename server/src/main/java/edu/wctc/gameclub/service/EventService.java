@@ -31,9 +31,9 @@ public class EventService {
     }
 
     public List<CalendarEvent> getAllCalendarEvents() {
-        List<CalendarEvent> list = new ArrayList<>();
-        eventRepository.findAll().forEach(event -> list.add(convertToDto(event)));
-        return list;
+        return getAllEvents().stream()
+                .map(this::convertToDto)
+                .toList();
     }
 
     public List<Event> getAllEvents() {
